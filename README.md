@@ -20,8 +20,16 @@ It's important to distinguish between **scales** and **axes**. For the the sake 
 ## Resources
 Here are a few resources to help you better understand and use scales.
 
+- [Quantitative Scales](https://github.com/mbostock/d3/wiki/Quantitative-Scales) _(d3 wiki)_
+- [Ordinal Scales](https://github.com/mbostock/d3/wiki/Ordinal-Scales) _(d3 wiki)_
+- [Categorical Colors](https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors) _(d3 wiki)_
+- [Scale Tutorial](http://alignedleft.com/tutorials/d3/scales) _(aligned left)_
+- [Scale Overview](http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/) _(Jerome Cukier)_
+
+
+
 ## Conceptual Overview
-As described above, D3 scales are functions that allow you to translate between the **domain** of your data and your visual **range**. Actually, it's a bit more complicated. As you know, in JavaScript, functions are actually objects. The implication of this is that the scale functions you create will have various properties that allow you to describe the behaviors of the scale. In previous modules, we often used data values directly for positioning elements in the DOM
+As described above, D3 scales are functions that allow you to translate between the **domain** of your data and your visual **range**. In previous modules, we often used data values directly for positioning elements in the DOM
 
 ```javascript
 svg.selectAll('circle') // select all circles in the svg
@@ -46,8 +54,13 @@ It would be somewhat trivial to write linear transformations yourself, but there
 
 >**Range of Output**: In order to create proper visual representations of your data, you'll need to establish the desired output range of your scale. In other words, you need to decide the set of possible pixels that express your underlying dataset. As with your domain, this could be expressed with a minimum and maximum for continuous data, and the set of possible values for ordinal/nominal data (there are a few options for this).
 
+As you know, in JavaScript, functions are actually objects. The implication of this is that the scale functions (objects) you create using D3 will have various properties that allow you to describe the behaviors of the scale. As described [on the wiki](https://github.com/mbostock/d3/wiki/Ordinal-Scales):
 
-## Linear Scales
+>You can call the scale like any other function, and the scale has additional methods that change its behavior. Like other classes in D3, scales follow the method chaining pattern where setter methods return the scale itself, allowing multiple setters to be invoked in a concise statement.
+
+
+## Quantitative Scales
+Quantitative scales allow you to translate between a continuous _data-domain_ and a continuous _output-range_. 
 
 
 ## Ordinal Scales

@@ -29,7 +29,8 @@ Here are a few resources to help you better understand and use scales.
 - [D3 min Function](https://github.com/mbostock/d3/wiki/Arrays#d3_min) _(d3 wiki)_
 - [D3 set values](https://github.com/mbostock/d3/wiki/Arrays#set_values) _(d3 wiki)_
 - [D3 Categorical Colors](https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors) _(d3 wiki)_
-
+- [D3 SVG Axes](https://github.com/mbostock/d3/wiki/SVG-Axes) _(d3 wiki)_
+- [D3 Margin Convention](https://bl.ocks.org/mbostock/3019563) _(bl.ock example)_
 
 ## Conceptual Overview
 As described above, D3 scales are functions that allow you to translate between the **domain** of your data and your visual **range**. In previous modules, we often used data values directly for positioning elements in the DOM
@@ -237,4 +238,62 @@ colorScale('A') // returns the first value in the range, '#1f77b4'
 
 These preset category scales are a great resource, but don't rely too heavily on them - they _are not_ the proper visual encoding for many dataset.
 
-## Axes (include diagram of margin!)
+## Axes
+**Axes** are visual representations of **scales**. While scales allow you to position an element (in pixels) based on it's data value, axes provide meaning to the pixels on the screen, allowing users to understand what each pixel means in terms of the data domain. Like anything else in your DOM, axes consist of HTML elements (`paths`, `lines`, and `text`) arranged to _look like axes_. Luckily, D3 provides us with a set of tools for defining, constructing, and manipulating axes based on changes to their corresponding scales.
+
+### Axis Elements
+Axes are `svg` elements that contain the necessary elements for communicating the range of your data. In order to define a scale, you'll need to provide the following information:
+
+> The **selection** that should render your axis. You should select a `g` element and use the `.call` method to declare the context for rendering your axis
+
+> The **scale** that is being expressed with the axis. The scale's `range` will determine the pixel range of the scale, ad the `domain` will be translated into tick values
+
+> See the [documentation](https://github.com/mbostock/d3/wiki/SVG-Axes) for additional information you can provide to control visual layout.
+
+Here is an example of how you could define and render an axis:
+
+```javascript
+// Define an axis for your scale with the ticks oriented on the bottom
+var axis = d3.svg.axis() //define your axis function
+                 .scale(scale) // sets the domain and range based on the domain/range of the scale
+                 .orient('bottom'); // but ticks below the axis line
+
+// Create a visual (g) element in which you want to render your axis
+var axisLabel = svg.append("g") // append a `g` element
+                    .attr("class", "axis") // assign the class "axis"
+                    .attr("transform", "translate(25, 40)") // shift it 25 pixels right, 40 pixels down
+                    .call(axis); // Call the axis in the context of the g element
+
+```
+For practice rendering an axis alongside the data being displayed, see [exercise-1](exercise-1).
+
+### Positioning Axes
+The second challenge of working with axes is figuring out where to put them. Like other D3 elements, you'll need to specify the location of the `g` element in which you render your scale. Here is an [example](https://bl.ocks.org/mbostock/3019563) that suggests a convention for specifying the margin for your chart:
+
+![margin convention for d3 charts](imgs/margin-convention.png)
+
+**Note**, the charting area (i.e., where all of your data symbols are rendered) is inside of an inner `g` element within you `svg`. This allows you to easily shift all of your markers without changing your scales. For example:
+
+```javascript
+// 'g' element in which to place the circles, shifted down from the top left
+var g = svg.append('g')
+    .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')')
+    .attr('height', height)
+    .attr('width', width);
+
+
+// Bind data to your selection of circles within your `g` element
+var circles = g.selectAll('circle').data(data)
+```
+
+Finally, if you want to label your axes, you'll simply have to put a piece of text in the right place in your SVG. For example:
+
+```javascript
+// Add a title g for the x axis
+svg.append('text')
+  .attr('transform', 'translate(' + (margin.left + width/2) + ',' + (height + margin.top + 40) + ')')
+  .attr('class', 'title')
+  .text('Gross Domestic Product in 2014 (2005 USD)');
+```
+
+To practice bringing these skills together on a real dataset, see [exercise-2](exercise-2).

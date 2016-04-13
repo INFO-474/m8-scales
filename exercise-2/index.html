@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Module 8: Exercise 2</title>
+
+		<!-- Libraries -->
+		<script src="https://code.jquery.com/jquery.min.js"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+
+		<!-- Custom files -->
+		<link rel="stylesheet" href="css/main.css"/>
+	</head>
+	<body class="container">
+		<h1>Welcome to Module 8 Exercise 2</h1>
+		<p>This exercise challenges you to bring together your D3 skills for defining scales, building charts, and positioning axes. In your <code>js/main.js</code> file, do the following:
+		<div class="instructions">
+			<ul>
+				<li>Read in your <code>data/prepped_data.csv</code> file using the <code>d3.csv</code> function</li>
+				<li>Define scales to position GDP in a horizontal direction, and Life Expectancy in a vertical direction. You should use log and linear scales (respectively)</li>
+				<li>Add circle elements to your screen for each element in your dataset by performing a data-join. Note, you should bind data to the <code>g</code> element insdie your SVG to better facilitate arranging your elements</li>
+				<li>Define axes and append them to your DOM</li>
+				<li>Append <code>text</code> elements to your DOM to represent axis labels.</li>
+				<li><strong>Bonus:</strong> Color each point by region, and add a legend (remember, a legend is just a set of HTML elements that look like a legend)</li>
+				<li><strong>Bonus:</strong> Size each point by fertility, and add a legend (remember, a legend is just a set of HTML elements that look like a legend)</li>
+			</ul>
+		</div>
+		<h2>Gross Domestic Product v.s. Life Expectancy in 2014</h2>
+		<div id="vis"></div>
+	</body>
+
+	<!-- your script file -->
+	<script src="js/main.js"></script>
+</html>

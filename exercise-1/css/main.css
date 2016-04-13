@@ -1,0 +1,28 @@
+/* Main CSS file */
+
+p {
+  opacity:.7
+}
+
+.instructions > ul > li {
+  border-bottom:1px solid #D3d3d3;
+  list-style-type: none;
+  padding:10px;
+}
+
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: #d3d3d3;
+	shape-rendering: crispEdges;
+}
+
+.mid-label {
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+
+.axis-label {
+  font-size:20px;
+  text-anchor:middle;
+}

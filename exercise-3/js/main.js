@@ -11,12 +11,6 @@ $(function() {
 		var sex = 'female';
 		var type = 'binge';
 
-	 	// Select SVG to work with, setting width and height (the vis <div> is defined in the index.html file)
-		var svg = d3.select('#vis')
-			.append('svg')
-			.attr('height', 600)
-			.attr('width', 1000);
-
 		// Margin: how much space to put in the SVG for axes/titles
 		var margin = {
 			left:70,
@@ -28,6 +22,12 @@ $(function() {
 		// Height/width of the drawing area for data symbols
 		var height = 600 - margin.bottom - margin.top;
 		var width = 1000 - margin.left - margin.right;
+
+	 	// Select SVG to work with, setting width and height (the vis <div> is defined in the index.html file)
+		var svg = d3.select('#vis')
+			.append('svg')
+			.attr('height', 600)
+			.attr('width', 1000);
 
 		// Append a 'g' element in which to place the rects, shifted down and right from the top left corner
 		var g = svg.append('g')
@@ -126,6 +126,7 @@ $(function() {
 				.attr('y', height)
 				.attr('height', 0)
 				.attr('width', xScale.rangeBand())
+				.attr('class', 'bar')
 				.attr('title', function(d) {return d.state_name});
 
 			// Use the .exit() and .remove() methods to remove elements that are no longer in the data

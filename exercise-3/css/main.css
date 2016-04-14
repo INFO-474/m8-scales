@@ -12,3 +12,8 @@
 .axis text {
   font-size:10px;
 }
+
+.bar {
+  fill:green;
+  opacity:.4;
+}

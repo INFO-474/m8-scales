@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Module 8: Exercise 2</title>
+
+		<!-- Libraries -->
+		<script src="https://code.jquery.com/jquery.min.js"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+
+		<!-- Custom files -->
+		<link rel="stylesheet" href="css/main.css"/>
+	</head>
+	<body class="container">
+		<h1>Welcome to Module 8 Exercise 2</h1>
+		<p>This exercise challenges you to bring together your D3 skills for defining scales, building charts, and positioning axes. In a reusable way. In your <code>js/main.js</code> file, you should complete the following (broad) steps.
+		<div class="instructions">
+			<ul>
+				<li>Read in your <code>data/prepped_data.csv</code> file.</li>
+				<li>Append all non-data placeholder elements for you chart (<code>svg</code>, <code>g</code>, axis labels, axes), but <strong>do not</strong> call the axis functions that render them.</li>
+				<li>Write a function for setting the scales based on the current data selection.</li>
+				<li>Write a function for updating your axis elements (both the axes, and their labels).</li>
+				<li>Write a function to filter down your data to the current selection based on the current <code>sex</code> and <code>type</code></li>
+				<li>Write a reusable function to perform your data-join. Within this function you should set your scales and update your axes.</li>
+				<li>Assign an event handler to your <code>input</code> elements to set the <code>sex</code> and/or <code>type</code>, filter your data, then update your chart.</li>
+			</ul>
+		</div>
+
+		<div class="btn-group" data-toggle="buttons">
+		  <label class="btn btn-primary">
+		    <input value="male" class="sex" type="radio" name="options" id="option1" autocomplete="off">Male
+		  </label>
+		  <label class="btn btn-primary active">
+		    <input value="female" type="radio" class="sex" name="options" id="option2" autocomplete="off" checked>Female
+		  </label>
+		</div>
+
+		<div class="btn-group" data-toggle="buttons">
+		  <label class="btn btn-primary">
+		    <input value = "any" type="radio" name="options" id="option1" autocomplete="off">Any Drinking
+		  </label>
+		  <label class="btn btn-primary active">
+		    <input value = "binge" type="radio" name="options" id="option2" autocomplete="off" checked>Binge Drinking
+		  </label>
+		</div>
+
+
+		<h2>U.S. State Drinking Patterns in 2012</h2>
+
+		<div id="vis"></div>
+	</body>
+
+	<!-- your script file -->
+	<script src="js/main.js"></script>
+</html>

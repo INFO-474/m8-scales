@@ -92,7 +92,7 @@ $(function() {
 
 			// Update labels
 			xAxisText.text('State')
-			yAxisText.text('Percent Drinking (' + type + ')')
+			yAxisText.text('Percent Drinking (' + sex + ', '+ type + ')')
 		}
 
 		// Write a function to filter down the data to the current sex and type
@@ -108,7 +108,7 @@ $(function() {
 				return 0;
 			});
 		}
-		
+
 		// Store the data-join in a function: make sure to set the scales and update the axes in your function.
 		var draw = function(data) {
 			// Set scales
@@ -144,11 +144,13 @@ $(function() {
 
 		// Assign a change event to input elements to set the sex/type values, then filter and update the data
 		$("input").on('change', function() {
+			// Get value, determine if it is the sex or type controller
 			var val = $(this).val();
-			console.log(val);
 			var isSex = $(this).hasClass('sex');
 			if(isSex) sex = val;
 			else type = val;
+
+			// Filter data, update chart
 			filterData();
 			draw(currentData);
 		});
